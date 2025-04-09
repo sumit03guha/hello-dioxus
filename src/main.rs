@@ -15,6 +15,11 @@ fn App() -> Element {
             "Hello parent div",
             div { color: "blue", "Hello inner div" }
             h1 { color: "yellow", "Hello inner h1" }
+            NewComponent {}
         }
     }
+}
+
+fn NewComponent() -> Element {
+    rsx!(div { background_color: "pink", color: "blue", "Hello new component" })
 }
