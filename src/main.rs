@@ -2,19 +2,21 @@
 
 use dioxus::prelude::*;
 
+static CSS: Asset = asset!("/assets/main.css");
+
 fn main() {
     launch(App);
 }
 
 fn App() -> Element {
     rsx! {
+        document::Stylesheet { href: CSS }
         "Hello World!",
         div {
-            background_color: "green",
-            color: "grey",
+            class: "c",
             "Hello parent div",
-            div { color: "blue", "Hello inner div" }
-            h1 { color: "yellow", "Hello inner h1" }
+            div { class: "b", "Hello inner div" }
+            h1 { class: "a", "Hello inner h1" }
             NewComponent {}
         }
     }

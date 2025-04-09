@@ -1,0 +1,17 @@
+.a {
+    background-color: aqua;
+    color: blue;
+    font-size: 40px;
+}
+
+.b {
+    background-color: blue;
+    color: aqua;
+    font-size: 30px;
+}
+
+.c {
+    background-color: green;
+    color: yellow;
+    font-size: 20px;
+}
