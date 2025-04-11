@@ -4,4 +4,5 @@
 ✅ Render basic elements\
 ✅ Use `rsx!` macro\
 ✅ Add CSS via asset\
-✅ Create custom components
+✅ Create custom components\
+✅ Use props in components
