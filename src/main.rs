@@ -9,6 +9,11 @@ fn main() {
 }
 
 fn App() -> Element {
+    let person = Person {
+        name: "Alice".to_string(),
+        age: 23,
+    };
+
     rsx! {
         document::Stylesheet { href: CSS }
         "Hello World!",
@@ -17,11 +22,18 @@ fn App() -> Element {
             "Hello parent div",
             div { class: "b", "Hello inner div" }
             h1 { class: "a", "Hello inner h1" }
-            NewComponent {}
+            NewComponent { person }
         }
     }
 }
 
-fn NewComponent() -> Element {
-    rsx!(div { background_color: "pink", color: "blue", "Hello new component" })
+#[component]
+fn NewComponent(person: Person) -> Element {
+    rsx!(div { background_color: "pink", color: "blue", "Hello {person.name}, you are {person.age} years old." })
+}
+
+#[derive(Clone, PartialEq)]
+struct Person {
+    name: String,
+    age: u32,
 }
