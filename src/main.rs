@@ -1,11 +1,14 @@
 #![allow(non_snake_case)]
 
-use dioxus::prelude::*;
+use dioxus::{logger::tracing, prelude::*};
 
 static CSS: Asset = asset!("/assets/main.css");
 
 fn main() {
-    launch(App);
+    launch(|| {
+        tracing::info!("Rendering app!");
+        App()
+    });
 }
 
 fn App() -> Element {
@@ -23,7 +26,7 @@ fn App() -> Element {
             div { class: "b", "Hello inner div" }
             h1 { class: "a", "Hello inner h1" }
             NewComponent { person }
-        }
+        },
     }
 }
 
