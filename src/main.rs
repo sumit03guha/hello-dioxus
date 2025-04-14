@@ -27,6 +27,10 @@ fn App() -> Element {
             h1 { class: "a", "Hello inner h1" }
             NewComponent { person }
         },
+        div {
+            "New div",
+            button { onclick: |_| {tracing::info!("Button clicked")},  class: "button_1", "Click Me!" }
+        }
     }
 }
 

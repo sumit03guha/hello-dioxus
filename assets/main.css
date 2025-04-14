@@ -15,3 +15,9 @@
     color: yellow;
     font-size: 20px;
 }
+
+.button_1 {
+    padding: 3px;
+    margin: 3px;
+    border: 1px solid black;
+}
