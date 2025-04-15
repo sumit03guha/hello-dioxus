@@ -5,4 +5,6 @@
 ✅ Use `rsx!` macro\
 ✅ Add CSS via asset\
 ✅ Create custom components\
-✅ Use props in components
+✅ Use props in components\
+✅ Add tracing\
+✅ Add button
