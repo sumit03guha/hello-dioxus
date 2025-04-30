@@ -11,13 +11,19 @@ fn main() {
     });
 }
 
+struct Counter {
+    value: i32,
+}
+
 fn App() -> Element {
     let person = Person {
         name: "Alice".to_string(),
         age: 23,
     };
 
-    let counter = use_signal(|| 0);
+    let counter: Signal<Counter> = use_signal(|| Counter { value: 0 });
+
+    use_context_provider(|| counter);
 
     rsx! {
         document::Stylesheet { href: CSS }
@@ -33,7 +39,8 @@ fn App() -> Element {
             "New div",
             button { onclick: |_| {tracing::info!("Button clicked")},  class: "button_1", "Click Me!" }
         }
-        CounterComponent { counter }
+        CounterComponent { }
+        DisplayCounter {}
     }
 }
 
@@ -43,15 +50,31 @@ fn NewComponent(person: Person) -> Element {
 }
 
 #[component]
-fn CounterComponent(counter: Signal<i32>) -> Element {
+fn CounterComponent() -> Element {
+    let mut counter = use_context::<Signal<Counter>>();
+
     rsx!(
         div {
             class: "c",
             "Counter Div",
-            div { "Counter : {counter}" },
-                button { onclick: move |_| counter +=1 , "Increase Counter"},
-                button { onclick: move |_| counter -=1 , "Decrease Counter"},
-                button { onclick: move |_| counter.set(0) , "Reset Counter"},
+            div { "Counter : {counter.read().value}" },
+                button { onclick: move |_| counter.write().value +=1 , "Increase Counter"},
+                button { onclick: move |_| counter.write().value -=1 , "Decrease Counter"},
+                button { onclick: move |_| counter.set(Counter{value:0}) , "Reset Counter"},
+        }
+    )
+}
+
+#[component]
+fn DisplayCounter() -> Element {
+    let counter = use_context::<Signal<Counter>>();
+    rsx!(
+        div {
+            class: "d",
+            "Shared State Counter Div",
+            div {
+                "The Counter is : {counter.read().value}"
+            }
         }
     )
 }
