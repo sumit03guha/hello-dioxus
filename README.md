@@ -8,4 +8,5 @@
 ✅ Use props in components\
 ✅ Add tracing\
 ✅ Add button
-✅ Add use_signal for a counter component
+✅ Add use_signal for a counter component\
+✅ Add use_context for sharing state across components
