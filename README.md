@@ -8,3 +8,4 @@
 ✅ Use props in components\
 ✅ Add tracing\
 ✅ Add button
+✅ Add use_signal for a counter component
