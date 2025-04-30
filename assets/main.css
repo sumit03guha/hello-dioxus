@@ -16,6 +16,12 @@
     font-size: 20px;
 }
 
+.d {
+    background-color: yellow;
+    color: green;
+    font-size: 20px;
+}
+
 .button_1 {
     padding: 3px;
     margin: 3px;
