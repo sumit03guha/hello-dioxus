@@ -10,4 +10,5 @@
 ✅ Add button
 ✅ Add use_signal for a counter component\
 ✅ Add use_context for sharing state across components\
-✅ Hidden attribute
+✅ Hidden attribute\
+✅ Conditional class
