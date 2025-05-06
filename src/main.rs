@@ -4,6 +4,12 @@ use dioxus::{logger::tracing, prelude::*};
 
 static CSS: Asset = asset!("/assets/main.css");
 
+#[derive(Clone, PartialEq)]
+struct Person {
+    name: String,
+    age: u32,
+}
+
 fn main() {
     launch(|| {
         tracing::info!("Rendering app!");
@@ -41,6 +47,7 @@ fn App() -> Element {
         }
         CounterComponent { }
         DisplayCounter {}
+        ConditionalDiv {  }
     }
 }
 
@@ -79,8 +86,8 @@ fn DisplayCounter() -> Element {
     )
 }
 
-#[derive(Clone, PartialEq)]
-struct Person {
-    name: String,
-    age: u32,
+#[component]
+fn ConditionalDiv() -> Element {
+    let is_hidden = false;
+    rsx!(div { hidden: is_hidden, "This Div can be hidden" })
 }
