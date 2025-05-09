@@ -31,6 +31,8 @@ fn App() -> Element {
 
     use_context_provider(|| counter);
 
+    let input_text = use_signal(|| "".to_string());
+
     rsx! {
         document::Stylesheet { href: CSS }
         "Hello World!",
@@ -47,7 +49,8 @@ fn App() -> Element {
         }
         CounterComponent { }
         DisplayCounter {}
-        ConditionalDiv {  }
+        ConditionalDiv { }
+        InputComponent { input_text }
     }
 }
 
@@ -92,4 +95,11 @@ fn ConditionalDiv() -> Element {
     let is_blue_colour = false;
 
     rsx!(div { hidden: is_hidden, color: if is_blue_colour { "blue" } else { "green" }, "This Div can be hidden" })
+}
+
+#[component]
+fn InputComponent(input_text: String) -> Element {
+    rsx!(
+        div { "You have entered: {input_text}" }
+    )
 }
