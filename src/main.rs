@@ -1,6 +1,10 @@
 #![allow(non_snake_case)]
 
+mod components;
+mod routes;
+
 use dioxus::{logger::tracing, prelude::*};
+use routes::Route;
 
 static CSS: Asset = asset!("/assets/main.css");
 
@@ -22,6 +26,10 @@ struct Counter {
 }
 
 fn App() -> Element {
+    rsx!(Router::<Route> {})
+}
+
+fn App2() -> Element {
     let person = Person {
         name: "Alice".to_string(),
         age: 23,
