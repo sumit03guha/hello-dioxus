@@ -3,16 +3,14 @@
 mod components;
 mod routes;
 
+use components::{
+    ConditionalDiv, Counter, CounterComponent, DisplayCounter, InputComponent, Person,
+    PersonComponent,
+};
 use dioxus::{logger::tracing, prelude::*};
 use routes::Route;
 
 static CSS: Asset = asset!("/assets/main.css");
-
-#[derive(Clone, PartialEq)]
-struct Person {
-    name: String,
-    age: u32,
-}
 
 fn main() {
     launch(|| {
@@ -21,15 +19,11 @@ fn main() {
     });
 }
 
-struct Counter {
-    value: i32,
-}
-
 fn App() -> Element {
     rsx!(Router::<Route> {})
 }
 
-fn App2() -> Element {
+pub fn Home() -> Element {
     let person = Person {
         name: "Alice".to_string(),
         age: 23,
@@ -49,7 +43,7 @@ fn App2() -> Element {
             "Hello parent div",
             div { class: "b", "Hello inner div" }
             h1 { class: "a", "Hello inner h1" }
-            NewComponent { person }
+            PersonComponent { person }
         },
         div {
             "New div",
@@ -64,62 +58,4 @@ fn App2() -> Element {
             InputComponent { input_text }
         }
     }
-}
-
-#[component]
-fn NewComponent(person: Person) -> Element {
-    rsx!(div { background_color: "pink", color: "blue", "Hello {person.name}, you are {person.age} years old." })
-}
-
-#[component]
-fn CounterComponent() -> Element {
-    let mut counter = use_context::<Signal<Counter>>();
-
-    rsx!(
-        div {
-            class: "c",
-            "Counter Div",
-            div { "Counter : {counter.read().value}" },
-                button { onclick: move |_| counter.write().value +=1 , "Increase Counter"},
-                button { onclick: move |_| counter.write().value -=1 , "Decrease Counter"},
-                button { onclick: move |_| counter.set(Counter{value:0}) , "Reset Counter"},
-        }
-    )
-}
-
-#[component]
-fn DisplayCounter() -> Element {
-    let counter = use_context::<Signal<Counter>>();
-    rsx!(
-        div {
-            class: "d",
-            "Shared State Counter Div",
-            div {
-                "The Counter is : {counter.read().value}"
-            }
-        }
-    )
-}
-
-#[component]
-fn ConditionalDiv() -> Element {
-    let is_hidden = false;
-    let is_blue_colour = false;
-
-    rsx!(div { hidden: is_hidden, color: if is_blue_colour { "blue" } else { "green" }, "This Div can be hidden" })
-}
-
-#[component]
-fn InputComponent(input_text: Signal<String>) -> Element {
-    rsx!(
-        div { "You have entered: {input_text}" }
-        form {
-            onsubmit: move |_| input_text.set("".to_string()),
-            input {
-                placeholder: "Enter...",
-                value: input_text,
-                oninput: move |e| input_text.set(e.value()),
-            }
-        }
-    )
 }
