@@ -20,12 +20,15 @@ fn App() -> Element {
     let counter: Signal<Counter> = use_signal(|| Counter { value: 0 });
     use_context_provider(|| counter);
 
-    rsx!(Router::<Route> {})
+    rsx!(
+        document::Stylesheet { href: CSS }
+        Router::<Route> {}
+    )
 }
 
 pub fn Home() -> Element {
     rsx! {
-        document::Stylesheet { href: CSS }
+        // document::Stylesheet { href: CSS }
         "Hello World!",
         div {
             class: "c",
