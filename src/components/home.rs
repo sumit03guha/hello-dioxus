@@ -1,9 +1,10 @@
-use dioxus::prelude::*;
+use dioxus::{logger::tracing, prelude::*};
 
 use crate::routes::Route;
 
 #[component]
 pub fn Home() -> Element {
+    let navigator = use_navigator();
     rsx!(
         div {
             "Welcome to my Dioxus Learning -> Hello Dioxus"
@@ -20,5 +21,17 @@ pub fn Home() -> Element {
         Link {to: Route::CounterComponent {  }, "Counter"}
         br {}
         Link {to: Route::InputComponent { }, "Input"}
+        br {}
+
+        button {
+            onclick: move |_| {
+                match navigator.push(Route::HelloWorld { })
+                {
+                    None => {},
+                    Some(f) => tracing::error!("Navigation error : {:#?}", f)
+                }
+            },
+            "Go to Hello World"
+        }
     )
 }
