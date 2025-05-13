@@ -28,7 +28,6 @@ fn App() -> Element {
 
 pub fn Home() -> Element {
     rsx! {
-        // document::Stylesheet { href: CSS }
         "Hello World!",
         div {
             class: "c",
