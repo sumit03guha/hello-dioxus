@@ -1,21 +1,24 @@
 use crate::components::{
-    ConditionalDiv, CounterComponent, HelloWorld, InputComponent, Person, PersonComponent,
+    ConditionalDiv, CounterComponent, DivExamples, HelloWorld, Home, InputComponent, Person,
+    PersonComponent,
 };
-use crate::Home;
+
 use dioxus::prelude::*;
 
 #[derive(Routable, PartialEq, Clone)]
 pub enum Route {
-    #[route("/hello-world")]
-    HelloWorld {},
     #[route("/")]
     Home {},
+    #[route("/hello-world")]
+    HelloWorld {},
+    #[route("/div-examples")]
+    DivExamples {},
     #[route("/conditional-div")]
     ConditionalDiv {},
     #[route("/counter")]
     CounterComponent {},
     #[route("/input")]
-    InputComponent { input_text: Signal<String> },
+    InputComponent {},
     #[route("/person")]
     PersonComponent { person: Person },
 }
