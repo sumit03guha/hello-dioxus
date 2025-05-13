@@ -1,7 +1,9 @@
 use dioxus::prelude::*;
 
 #[component]
-pub fn InputComponent(input_text: Signal<String>) -> Element {
+pub fn InputComponent() -> Element {
+    let mut input_text = use_signal(|| "".to_string());
+
     rsx!(
         div { "You have entered: {input_text}" }
         form {
