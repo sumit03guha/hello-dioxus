@@ -13,4 +13,5 @@
 ✅ Hidden attribute\
 ✅ Conditional class\
 ✅ Router\
-✅ Link
+✅ Link\
+✅ Navigator
