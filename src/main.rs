@@ -17,7 +17,7 @@ fn main() {
 }
 
 fn App() -> Element {
-    let counter: Signal<Counter> = use_signal(|| Counter { value: 0 });
+    let counter: Signal<Counter> = use_signal(|| Counter { value: 10 });
     use_context_provider(|| counter);
 
     rsx!(
