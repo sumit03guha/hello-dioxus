@@ -12,7 +12,7 @@ pub fn InputComponent() -> Element {
             input {
                 placeholder: "Enter...",
                 value: input_text,
-                oninput: move |e| handle_input(e),
+                oninput: handle_input,
             }
         }
     )
