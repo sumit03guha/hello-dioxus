@@ -24,6 +24,8 @@ pub fn Home() -> Element {
         br {}
         Link {to: Route::ImageComponent { }, "Image"}
         br {  }
+        Link {to: Route::ResourceComponent {  }, "Resource"}
+        br {  }
 
         button {
             onclick: move |_| {

@@ -7,6 +7,7 @@ mod image;
 mod input;
 mod not_found;
 mod person;
+mod resource;
 
 pub use conditional_div::ConditionalDiv;
 pub use counter::{Counter, CounterComponent};
@@ -17,3 +18,4 @@ pub use image::ImageComponent;
 pub use input::InputComponent;
 pub use not_found::NotFound;
 pub use person::{Person, PersonComponent};
+pub use resource::ResourceComponent;

@@ -1,6 +1,6 @@
 use crate::components::{
     ConditionalDiv, CounterComponent, DivExamples, HelloWorld, Home, ImageComponent,
-    InputComponent, NotFound, Person, PersonComponent,
+    InputComponent, NotFound, Person, PersonComponent, ResourceComponent,
 };
 
 use dioxus::prelude::*;
@@ -23,6 +23,8 @@ pub enum Route {
     PersonComponent { person: Person },
     #[route("/image")]
     ImageComponent {},
+    #[route("/resource")]
+    ResourceComponent {},
     #[route("/:..path")]
     NotFound { path: Vec<String> },
 }
