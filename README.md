@@ -16,4 +16,5 @@
 ✅ Link\
 ✅ Navigator\
 ✅ Callback\
-✅ NotFound page
+✅ NotFound page\
+✅ Image component
