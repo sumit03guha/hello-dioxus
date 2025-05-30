@@ -18,4 +18,5 @@
 ✅ Callback\
 ✅ NotFound page\
 ✅ Image component\
-✅ User resource\
+✅ Use resource\
+✅ Refetch data from the resource
