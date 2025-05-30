@@ -17,4 +17,5 @@
 ✅ Navigator\
 ✅ Callback\
 ✅ NotFound page\
-✅ Image component
+✅ Image component\
+✅ User resource\
